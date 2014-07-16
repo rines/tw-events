@@ -29,7 +29,7 @@ eventsApp.controller("EventsController", function($scope, $timeout) {
       if (i == filteredEvents.length) {
         i = 0;
       }
-      $scope.currentEvent = filteredEvents[i];
+      $scope.currentEvent = filteredEvents[i++];
       $scope.$apply();
       mytimeout = $timeout($scope.onTimeout,1000);
     }
@@ -40,21 +40,20 @@ eventsApp.controller("EventsController", function($scope, $timeout) {
   function filterEvents(events, startDate, endDate) {
     var eventIndices = events.getFilteredRows([{column: 2, minValue: startDate, maxValue: endDate}]);
     var eventRows = [];
+    console.log('indices: ' + eventIndices);
 
     var rowToEvent = function(events, rowIndex) {
       event = {};
-      event.date = events.getValue(0, 2);
-      event.time = events.getValue(0, 3);
-      event.title = events.getValue(0, 4);
-      event.link = events.getValue(0, 5);
+      event.date = events.getValue(rowIndex, 2);
+      event.time = events.getValue(rowIndex, 3);
+      event.title = events.getValue(rowIndex, 4);
+      event.link = events.getValue(rowIndex, 5);
       return event;
     }
 
     for (var i = 0; i < eventIndices.length; i++) {
-      console.log(events.getRowProperties(eventIndices[i]));
       eventRows.push(rowToEvent(events, eventIndices[i]));
     }
-    console.log("event rows: " + eventRows);
     return eventRows;
   }
 });
