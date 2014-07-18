@@ -1,5 +1,8 @@
 var eventsApp = angular.module("eventsApp", []);
 eventsApp.controller("EventsController", function($scope, $timeout) {
+  googleSpreadsheetWrapper = new GoogleSpreadsheetWrapper();
+});
+  /*
   getNYEvents();
 
   function getNYEvents() {
@@ -56,4 +59,4 @@ eventsApp.controller("EventsController", function($scope, $timeout) {
     }
     return eventRows;
   }
-});
+ */

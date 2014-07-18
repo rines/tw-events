@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "phantomjs": "~1.9.7-14",
+    "karma": "~0.12.17"
+  }
+}
