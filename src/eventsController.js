@@ -1,8 +1,17 @@
 var eventsApp = angular.module("eventsApp", []);
-eventsApp.controller("EventsController", function($scope, $timeout) {
-  googleSpreadsheetWrapper = new GoogleSpreadsheetWrapper();
+eventsApp.controller("EventsController", ['$scope', '$timeout', EventsController]);
 
-});
+function EventsController($scope, $timeout, googleSpreadsheetWrapper) {
+  this.setScopeEvents = function(events) {
+    $scope.events = events;
+  };
+  this.changeCurrentEvent = function() {};
+
+  googleSpreadsheetWrapper.getNYEvents(this.setScopeEvents);
+
+  $timeout(this.changeCurrentEvent, 0)
+}
+
   /*
   getNYEvents();
 
@@ -35,9 +44,10 @@ eventsApp.controller("EventsController", function($scope, $timeout) {
       }
       $scope.currentEvent = filteredEvents[i++];
       $scope.$apply();
-      mytimeout = $timeout($scope.onTimeout,1000);
+      $timeout($scope.onTimeout,1000);
     }
-    var mytimeout = $timeout($scope.onTimeout,1000);
+
+    $timeout($scope.onTimeout,1000);
 
   }
 
