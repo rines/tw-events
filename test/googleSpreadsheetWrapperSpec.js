@@ -6,14 +6,13 @@ describe("Google Spreadsheets API Wrapper", function() {
   });
 
   it("gets spreadsheet data from TW Event Spreadsheet", function() {
-    var SPREADSHEET_URL = 'https://spreadsheets.google.com/a/thoughtworks.com/tq?key=0AooMU9lnV1TodDRpanJjTXZfdm9TbWI0SmI4cV9qeVE';
     var query = jasmine.createSpyObj('query', ['setQuery', 'send']);
     google.visualization = {Query: function() { return query; }};
     spyOn(google.visualization, 'Query').andCallThrough();
 
     googleSpreadsheetWrapper.getNYEvents();
 
-    expect(google.visualization.Query).toHaveBeenCalledWith(SPREADSHEET_URL);
+    expect(google.visualization.Query).toHaveBeenCalledWith('https://spreadsheets.google.com/a/thoughtworks.com/tq?key=0AooMU9lnV1TodDRpanJjTXZfdm9TbWI0SmI4cV9qeVE');
     expect(query.setQuery).toHaveBeenCalledWith('select * where B=\'NYC\'');
     expect(query.send).toHaveBeenCalledWith(googleSpreadsheetWrapper.processQueryResponse);
   });
@@ -35,7 +34,11 @@ describe("Google Spreadsheets API Wrapper", function() {
 
     googleSpreadsheetWrapper.filterByCloseDates(fakeDataTable);
 
-    expect(fakeDataTable.getFilteredRows).toHaveBeenCalledWith({column: 2, minValue: jasmine.any(Date), maxValue: jasmine.any(Date)});
+    expect(fakeDataTable.getFilteredRows).toHaveBeenCalledWith([{
+      column: 2,
+      minValue: jasmine.any(Date),
+      maxValue: jasmine.any(Date)
+    }]);
   });
 
   it("gets data from the data table and returns an event", function() {
