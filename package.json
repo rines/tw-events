@@ -4,6 +4,10 @@
     "karma": "~0.12.17",
     "karma-jasmine": "~0.1.5",
     "karma-phantomjs-launcher": "~0.1.4",
-    "karma-nyan-reporter": "0.0.45"
+    "karma-nyan-reporter": "0.0.45",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.3"
   }
 }
