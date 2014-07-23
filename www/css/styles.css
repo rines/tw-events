@@ -1,0 +1,39 @@
+.center {
+  text-align: center;
+}
+body {
+  background-color: black;
+}
+#content {
+  font-family: sans-serif;
+  color: #bfbfbf;
+  width: 400px;
+}
+#content .time {
+  text-align: center;
+  margin: 10px 0;
+}
+#content .calendar {
+  text-align: center;
+}
+#content .calendar .date {
+  color: black;
+  display: inline-block;
+  width: 45px;
+  height: 30px;
+  background: url('../images/calendar.png');
+  background-size: 100% 100%;
+  padding-top: 14px;
+  margin: 2px;
+}
+#content .calendar .inactive {
+  opacity: .3;
+}
+#content .footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5em;
+}
+#content table td {
+  vertical-align: top;
+}

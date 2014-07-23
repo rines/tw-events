@@ -15,8 +15,7 @@ describe("Events Controller", function() {
   });
 
   it("gets events from external google spreadsheet", function() {
-
-    expect(googleSpreadsheetWrapper.getNYEvents).toHaveBeenCalledWith(eventsController.setScopeEvents);
+    expect(googleSpreadsheetWrapper.getNYEvents).toHaveBeenCalledWith(jasmine.any(Date), jasmine.any(Date), eventsController.setScopeEvents);
   });
 
   it("assigns events from external google spreadsheet to events on the scope", function() {
@@ -62,4 +61,10 @@ describe("Events Controller", function() {
     expect(scope.currentEvent).toEqual("Event 1");
   });
 
+  it("provides an array of dates to be displayed", function() {
+    scope.minDate = new Date("6/30/2014");
+    scope.maxDate = new Date("7/6/2014");
+
+    expect(scope.getDatesToDisplay()).toEqual([30, 1, 2, 3, 4, 5, 6]);
+  });
 });

@@ -1,0 +1,46 @@
+@gray: darken(white, 25%);
+.center {
+  text-align: center;
+}
+
+body {
+  background-color: black;
+}
+
+#content {
+  font-family: sans-serif;
+  color: @gray;
+  width: 400px;
+
+  .time {
+    .center;
+    margin: 10px 0;
+  }
+
+  .calendar {
+    .center;
+    .date {
+      color: black;
+      display: inline-block;
+      width: 45px;
+      height: 30px;
+      background: url('../images/calendar.png');
+      background-size: 100% 100%;
+      padding-top: 14px;
+      margin: 2px;
+    }
+    .inactive {
+      opacity: .3;
+    }
+  }
+
+  .footer {
+    .center;
+    padding: 10px;
+    font-size: 1.5em;
+  }
+
+  table td {
+    vertical-align: top;
+  }
+}

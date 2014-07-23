@@ -37,6 +37,8 @@ describe("Google Spreadsheets API Wrapper", function() {
   it("filters the data table by specifying the start and end dates", function() {
     var fakeDataTable = jasmine.createSpyObj('fakeDataTable', ['getFilteredRows']);
 
+
+    googleSpreadsheetWrapper.getNYEvents(new Date(), new Date());
     googleSpreadsheetWrapper.filterByCloseDates(fakeDataTable);
 
     expect(fakeDataTable.getFilteredRows).toHaveBeenCalledWith([{
@@ -66,7 +68,7 @@ describe("Google Spreadsheets API Wrapper", function() {
     var events = ["an event", "another event"];
     spyOn(googleSpreadsheetWrapper, 'filterByCloseDates').andReturn(events);
 
-    googleSpreadsheetWrapper.getNYEvents(callback);
+    googleSpreadsheetWrapper.getNYEvents(new Date(), new Date(), callback);
     googleSpreadsheetWrapper.processQueryResponse({getDataTable: function() {}});
 
     expect(callback).toHaveBeenCalledWith(events);

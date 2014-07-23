@@ -8,10 +8,33 @@
     </script>
     <script type="text/javascript" src="js/eventsController.js"></script>
     <script type="text/javascript" src="js/googleSpreadsheetWrapper.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
-    <div ng-controller="EventsController">
-      {{currentEvent}}
+    <div id="content" ng-show="!!events" ng-controller="EventsController">
+      <!-- logo -->
+      <img src="http://placehold.it/400x100" />
+
+      <div class="calendar">
+        <span ng-class="{inactive: currentEvent.date.getDate() != date}" class="date" ng-repeat="date in getDatesToDisplay()">{{ date }}</span>
+      </div>
+
+      <div>
+        <div class="time">{{ currentEvent.time }}</div>
+        <img src="http://placehold.it/400x300" />
+        <!-- <img ng-src="{{ currentEvent.imageLink }}" /> -->
+      </div>
+      <hr />
+      <div>
+        <table>
+          <tr ng-repeat="event in events">
+            <td>{{ event.date | date : "MM/dd"  }}</td>
+            <td>{{ event.title }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="footer">#THOUGHTWORKSNYC</div>
     </div>
   </body>
 </html>

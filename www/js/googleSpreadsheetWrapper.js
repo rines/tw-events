@@ -8,17 +8,11 @@ function GoogleSpreadsheetWrapper() {
   var TITLE_COLUMN = 4;
 
   var _this = this;
-  var callback;
 
-  var fromToday = function(offset) {
-    var date = new Date();
-    date.setDate(date.getDate() + offset);
-    return date;
-  };
-
-
-  this.getNYEvents = function(callback) {
+  this.getNYEvents = function(minDate, maxDate, callback) {
     this.callback = callback;
+    this.minDate = minDate;
+    this.maxDate = maxDate;
     var query = new google.visualization.Query(SPREADSHEET_URL);
     query.setQuery('select * where B=\'NYC\'');
     query.send(_this.processQueryResponse);
@@ -32,8 +26,8 @@ function GoogleSpreadsheetWrapper() {
   this.filterByCloseDates = function(dataTable) {
     var indices = dataTable.getFilteredRows([{
       column: DATE_COLUMN,
-      minValue: fromToday(-1),
-      maxValue: fromToday(6)
+      minValue: _this.minDate,
+      maxValue: _this.maxDate
     }]);
     var filteredEvents = [];
     for (var i in indices) {
