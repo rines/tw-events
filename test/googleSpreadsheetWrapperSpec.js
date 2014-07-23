@@ -1,14 +1,19 @@
 describe("Google Spreadsheets API Wrapper", function() {
   var googleSpreadsheetWrapper;
+  var query;
 
   beforeEach(function() {
+    query = jasmine.createSpyObj('query', ['setQuery', 'send']);
+    google = {
+      visualization: {
+        Query: jasmine.createSpy().andReturn(query)
+      }
+    };
+
     googleSpreadsheetWrapper = new GoogleSpreadsheetWrapper();
   });
 
-  it("gets spreadsheet data from TW Event Spreadsheet", function() {
-    var query = jasmine.createSpyObj('query', ['setQuery', 'send']);
-    google.visualization = {Query: function() { return query; }};
-    spyOn(google.visualization, 'Query').andCallThrough();
+  it("gets spreadsheet data from TW events spreadsheet", function() {
 
     googleSpreadsheetWrapper.getNYEvents();
 

@@ -16,6 +16,7 @@ function GoogleSpreadsheetWrapper() {
     return date;
   };
 
+
   this.getNYEvents = function(callback) {
     this.callback = callback;
     var query = new google.visualization.Query(SPREADSHEET_URL);
