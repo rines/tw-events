@@ -61,10 +61,4 @@ describe("Events Controller", function() {
     expect(scope.currentEvent).toEqual("Event 1");
   });
 
-  it("provides an array of dates to be displayed", function() {
-    scope.minDate = new Date("6/30/2014");
-    scope.maxDate = new Date("7/6/2014");
-
-    expect(scope.getDatesToDisplay()).toEqual([30, 1, 2, 3, 4, 5, 6]);
-  });
 });

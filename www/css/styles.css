@@ -1,38 +1,78 @@
 .center {
   text-align: center;
 }
+.center-y {
+  display: table;
+}
+.center-y span {
+  display: table-cell;
+  vertical-align: middle;
+}
 body {
-  background-color: black;
+  background-color: #000000;
 }
 #content {
-  font-family: sans-serif;
-  color: #bfbfbf;
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  width: 400px;
+  height: 1000px;
+}
+#content hr {
+  height: 4px;
+  background-color: #ef5ba1;
+}
+#content .logo {
+  padding: 20px 0 0 20px;
+  width: 380px;
+}
+#content .title {
+  text-align: center;
+}
+#content .event-detail {
+  padding-bottom: 2px;
+  margin: 20px 40px;
+}
+#content .event-detail .title {
+  height: 100px;
+  font-weight: bolder;
+  margin: 0px;
+  display: table;
+}
+#content .event-detail .title span {
+  display: table-cell;
+  vertical-align: middle;
+}
+#content .event-detail .title .text {
+  width: 320px;
+  text-align: center;
+}
+#content .all-events {
+  margin-top: -20px;
   width: 400px;
 }
-#content .time {
-  text-align: center;
-  margin: 10px 0;
+#content .all-events .date-cell {
+  display: table;
+  display: table-cell;
+  color: #808080;
 }
-#content .calendar {
-  text-align: center;
+#content .all-events .date-cell span {
+  display: table-cell;
+  vertical-align: middle;
 }
-#content .calendar .date {
-  color: black;
-  display: inline-block;
-  width: 45px;
-  height: 30px;
-  background: url('../images/calendar.png');
-  background-size: 100% 100%;
-  padding-top: 14px;
-  margin: 2px;
+#content .all-events .date-cell .day {
+  padding-left: 20px;
+  font-size: 1.8em;
+  font-weight: bolder;
 }
-#content .calendar .inactive {
-  opacity: .3;
+#content .all-events .date-cell .month {
+  padding-left: 3px;
+  font-size: x-small;
 }
-#content .footer {
-  text-align: center;
-  padding: 10px;
-  font-size: 1.5em;
+#content .all-events .title-cell {
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: left;
+  vertical-align: middle;
 }
 #content table td {
   vertical-align: top;
